@@ -1,0 +1,29 @@
+{ 
+  "label": "地址信息",
+  "prop": "address", 
+  "align": "center",
+  "__children": [
+    {
+      "label": "省份",
+      "prop": "province",
+      "align": "center"
+    },
+    {
+      "label": "城市",
+      "prop": "city",
+      "align": "center",
+      "__children": [
+        {
+          "label": "区",
+          "prop": "area",
+          "align": "center"
+        },
+        {
+          "label": "县",
+          "prop": "county",
+          "align": "center"
+        }
+      ]
+    }
+  ]
+}
