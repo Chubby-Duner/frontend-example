@@ -39,7 +39,12 @@
       <router-link to="/myTable">MyTable</router-link> |
       <router-link to="/zipFile">批量下载压缩</router-link> |
       <router-link to="/vmodel">v-model</router-link> |
-      <router-link to="/waterFall">瀑布流</router-link> |
+      <router-link to="/waterFall">waterFall</router-link> |
+      <router-link to="/emitUpdatetest">$emit(update: xxx)</router-link> |
+      <router-link to="/dialogCompoentIndex">el-dialog组件</router-link> |
+      <router-link to="/treeTransfer">treeTransfer</router-link> |
+      <router-link to="/fileChunksUpload">fileChunksUpload</router-link> |
+      <router-link to="/tinymce">tinymce</router-link> |
     </div>
     <!-- <div>
       <button @click="push">跳转</button>
@@ -67,6 +72,8 @@
 // import Home from "@/views/Home.vue";
 // import tabs from "@/views/tabs.vue";
 // import prop from "@/components/propsText.vue";
+import { checkVersion } from "version-rocket";
+import { version } from "../package.json"
 
 export default {
   data() {
@@ -81,6 +88,28 @@ export default {
       return `${this.parantData}----拼接666`;
     },
   },
+  beforeCreate() {
+    // const { VITE_PUBLIC_PATH, MODE } = import.meta.env;
+// https://github.com/guMcrey/version-rocket/blob/main/README.zh-CN.md#api
+    // if (MODE === "production") {
+    // 版本实时更新检测，只作用于线上环境
+    checkVersion(
+      // config
+      {
+        // 5分钟检测一次版本
+        pollingTime: 300000,
+        localPackageVersion: version,
+        originVersionFileUrl: `${location.origin}version.json`
+      },
+      // options
+      {
+        title: 'Element Demo',
+        description: "检测到新版本",
+        buttonText: "立即更新"
+      }
+    );
+    // }
+  },
   methods: {
     getSonNum(num) {
       this.parantData = num;
@@ -90,7 +119,7 @@ export default {
       // this.
     },
     asyncClick() {},
-    // 测试连续跳转同一路由  (会报错，不能这样写)  
+    // 测试连续跳转同一路由  (会报错，不能这样写)
     push() {
       let arr = [{id: 111, value: 'a'}, {id: 123, value: 'b'}]
       let i = 0

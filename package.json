@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && generate-version-file",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.6",
     "@parrotjs/vue-waterfall": "^8.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",
+    "el-tree-transfer": "^2.4.7",
     "element-ui": "^2.15.1",
     "file-saver": "^2.0.5",
     "js-md5": "^0.7.3",
@@ -24,6 +26,8 @@
     "sortablejs": "^1.15.0",
     "spark-md5": "^3.0.2",
     "v-charts": "^1.19.0",
+    "version-rocket": "^1.7.3",
+    "tinymce": "^5.7.1",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.3",
     "vue-i18n": "^8.25.0",

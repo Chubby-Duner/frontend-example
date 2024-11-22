@@ -33,6 +33,9 @@
 32. views/packageEleTable --- 封装的el-table
 33. views/waterFall --- 水印（报错）
 34. views/views/packageEleTable --- 封装的el-table
+35. views/fileChunksUpload --- 分片上传
+35. views/emitUpdatetest --- $emit(update: xxx)的用法
+35. views/tinymce --- 富文本
 
 ### css
 box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.09);

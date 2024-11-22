@@ -25,7 +25,7 @@ const routes = [
   {
     path: '/table',
     name: 'Table',
-    // route level code-splitting 
+    // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
@@ -216,6 +216,31 @@ const routes = [
     component: () => import('../views/waterFall.vue')
   },
   {
+    path: '/emitUpdatetest',
+    name: 'EmitUpdateCompoent',
+    component: () => import('../views/emitUpdatetest.vue')
+  },
+  {
+    path: '/dialogCompoentIndex',
+    name: 'DialogCompoentIndex',
+    component: () => import('../views/dialogCompoentIndex.vue')
+  },
+  {
+    path: '/treeTransfer',
+    name: 'TreeTransfer',
+    component: () => import('../views/treeTransfer.vue')
+  },
+  {
+    path: '/fileChunksUpload',
+    name: 'FileChunksUpload',
+    component: () => import('../views/fileChunksUpload.vue')
+  },
+  {
+    path: '/tinymce',
+    name: 'Tinymce',
+    component: () => import('../views/tinymce.vue')
+  },
+  {
     path: '*',
     component: () => import('../components/page404/index.vue')
   }
@@ -224,7 +249,7 @@ const routes = [
 const router = new VueRouter({
   routes,
   scrollBehavior(to, form, savedPosition) {
-    
+
     // return 期望滚动到哪个的位置
 
     console.log(to, form, savedPosition);
@@ -243,18 +268,18 @@ const router = new VueRouter({
         if (document.querySelector(to.hash)) {
           return position;
         }
-        // return false就不会回滚到页面顶部，减少用户多余的滚动操作 
+        // return false就不会回滚到页面顶部，减少用户多余的滚动操作
         return false;
       }
     }
   }
 })
 
-NProgress.configure({     
-  easing: 'ease',  // 动画方式    
-  speed: 500,  // 递增进度条的速度    
-  showSpinner: false, // 是否显示加载ico    
-  trickleSpeed: 200, // 自动递增间隔    
+NProgress.configure({
+  easing: 'ease',  // 动画方式
+  speed: 500,  // 递增进度条的速度
+  showSpinner: false, // 是否显示加载ico
+  trickleSpeed: 200, // 自动递增间隔
   minimum: 0.3 // 初始化时的最小百分比
 })
 
@@ -269,7 +294,7 @@ router.beforeEach((to, from , next) => {
   next();
 });
 
-router.afterEach(() => {  
+router.afterEach(() => {
   // 在即将进入新的页面组件前，关闭掉进度条
   NProgress.done()
 })

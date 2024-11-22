@@ -72,6 +72,15 @@ export default {
             function (data) {
               return data;
             },
+
+            比如我上传6个文件，我有一个变量可以控制并发的的文件数，比如 concurrentLimit = 3
+
+            每次只能并发3个文件，每个文件的分片要按顺序上传
+
+            文件1  文件2 文件3
+
+             分片1  分片1  分片1
+             分片2  分片2  分片2
           ],
 
         */
@@ -79,6 +88,7 @@ export default {
         // 请求操作
         const formData = new FormData();
         this.fileList.forEach((e) => {
+          console.log('🚀 ~ this.fileList.forEach ~ e:', e)
           // formData.append("file", e.raw);  // 文件流
           // const fileReader = new FileReader()
           // // 小文件分片读取 1
@@ -112,6 +122,36 @@ export default {
           //     console.log(md5.end());
           //   }
           // };
+
+          // 计算每个分片的大小
+          // function calculateChunkSizes(totalSize, chunkSize) {
+          //     let totalChunks = Math.ceil(totalSize / chunkSize); // 计算总分片数
+          //     let chunkSizes = new Array(totalChunks).fill(chunkSize); // 初始化分片大小数组
+              
+          //     // 调整最后一个分片的大小
+          //     if (totalSize % chunkSize !== 0) {
+          //         chunkSizes[totalChunks - 1] = totalSize % chunkSize;
+          //     }
+              
+          //     return chunkSizes;
+          // }
+
+          // // 使用示例
+          // let totalFileSize = 1024 * 1024 * 10; // 假设文件大小为10MB
+          // let desiredChunkSize = 1024 * 1024; // 每个分片大小为1MB
+          // let sizes = calculateChunkSizes(totalFileSize, desiredChunkSize);
+          // console.log(sizes); // 输出每个分片的大小
+
+          const reader = new FileReader();  
+          reader.readAsArrayBuffer(e.raw);  
+          reader.onload = (e) => {  
+            const content = e.target.result;  
+            const spark = new SparkMD5.ArrayBuffer();  
+            spark.append(content);  
+            const md5 = spark.end();  
+            console.log('MD5:', md5);  
+            // 你可以在这里做进一步的处理，比如将 MD5 值发送到服务器等  
+          };  
 
 
           // 大文件分片读取 2
