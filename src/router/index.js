@@ -86,6 +86,11 @@ const routes = [
     component: () => import('../views/VueDraggable.vue')
   },
   {
+    path: '/vuedraggable2',
+    name: 'VueDraggable2',
+    component: () => import('../views/VueDraggable2.vue')
+  },
+  {
     path: '/vchart',
     name: 'vChart',
     component: () => import('../views/Vchart.vue')
@@ -239,6 +244,21 @@ const routes = [
     path: '/tinymce',
     name: 'Tinymce',
     component: () => import('../views/tinymce.vue')
+  },
+  {
+    path: '/cartesian',
+    name: 'Cartesian',
+    component: () => import('../views/cartesian.vue')
+  },
+  {
+    path: '/dynamicBlock',
+    name: 'Dynamic block',
+    component: () => import('../views/dynamicBlock.vue')
+  },
+  {
+    path: '/treeCategory',
+    name: 'TreeCategory',
+    component: () => import('../views/treeCategory.vue')
   },
   {
     path: '*',

@@ -15,6 +15,7 @@
       <router-link to="/interval1">interval1</router-link> |
       <router-link to="/dynamictable">DynamicTable</router-link> |
       <router-link to="/vuedraggable">VueDraggable</router-link> |
+      <router-link to="/vuedraggable2">VueDraggable2</router-link> |
       <router-link to="/vchart">vChart</router-link> |
       <router-link to="/slottest">SlotTest</router-link> |
       <router-link to="/scrollnumber">ScrollNumber</router-link> |
@@ -45,6 +46,9 @@
       <router-link to="/treeTransfer">treeTransfer</router-link> |
       <router-link to="/fileChunksUpload">fileChunksUpload</router-link> |
       <router-link to="/tinymce">tinymce</router-link> |
+      <router-link to="/cartesian">cartesian</router-link> |
+      <router-link to="/dynamicBlock">dynamicBlock</router-link> |
+      <router-link to="/treeCategory">treeCategory</router-link> |
     </div>
     <!-- <div>
       <button @click="push">跳转</button>
