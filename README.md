@@ -42,6 +42,7 @@
 39. views/dynamicBlock --- 通过坐标信息动态生成元素（元素可拖拽可改变大小）
 40. views/VueDraggable2 --- VueDraggable拖拽实例example
 41. views/treeCategory --- 树形结构类目分区块显示与回显（可参考temuCategory）
+42. views/codeMirror --- 代码编辑器
 
 # css
 

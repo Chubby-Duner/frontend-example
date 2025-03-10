@@ -261,6 +261,11 @@ const routes = [
     component: () => import('../views/treeCategory.vue')
   },
   {
+    path: '/codeMirror',
+    name: 'CodeMirror',
+    component: () => import('../views/codeMirror.vue')
+  },
+  {
     path: '*',
     component: () => import('../components/page404/index.vue')
   }

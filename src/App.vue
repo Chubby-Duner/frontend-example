@@ -49,6 +49,7 @@
       <router-link to="/cartesian">cartesian</router-link> |
       <router-link to="/dynamicBlock">dynamicBlock</router-link> |
       <router-link to="/treeCategory">treeCategory</router-link> |
+      <router-link to="/codeMirror">codeMirror</router-link> |
     </div>
     <!-- <div>
       <button @click="push">跳转</button>
