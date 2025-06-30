@@ -20,7 +20,9 @@ import 'vxe-table/lib/style.css'
 
 Vue.use(VXETable)
 
-
+import { RecycleScroller } from 'vue-virtual-scroller';
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
+Vue.component('RecycleScroller', RecycleScroller);
 
 // 引入tainwind css
 // import "tailwindcss/tailwind.css" 
@@ -87,6 +89,15 @@ Vue.directive("permission", {
 // 引入directives.js全局注册的自定义指令
 import Directives from './utils/directives'
 Vue.use(Directives)
+
+import LoadingOnce from "../src/directive/loadingSelectOptions"; // 引入刚刚创建的文件
+Vue.use(LoadingOnce); // 全局注册指令
+
+import InfiniteScroll from '../src/directive/infinite-scroll'; // 替换为实际路径
+InfiniteScroll.install(Vue);
+
+import ElVirtualTransfer from './views/transfer';
+Vue.use(ElVirtualTransfer);
 
 // vue-clipboard2
 import VueClipboard from 'vue-clipboard2'

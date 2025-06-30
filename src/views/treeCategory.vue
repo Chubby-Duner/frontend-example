@@ -91,7 +91,7 @@ export default {
   mounted() {
     this.loadCategories(null); // 初始化加载一级分类
 
-    // 示例：回显选中路径 ['1', '1-1']
+    // 示例：回显选中路径 ['1', '1-1'] 
     // this.initializeSelected(['1', '1-1']);
   },
 };

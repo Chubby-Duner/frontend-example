@@ -1,0 +1,204 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+    <title>H5横屏签名</title>  
+    <style>  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            height: 100vh;  
+            display: flex;  
+            flex-direction: column;  
+            justify-content: center;  
+            align-items: center;  
+            background: #f0f0f0;  
+            touch-action: none;  
+        }  
+
+        #signature-container {  
+            width: 90vw;  
+            height: 60vh;  
+            background: white;  
+            border: 2px solid #ddd;  
+            margin-bottom: 20px;  
+            position: relative;  
+        }  
+
+        #canvas {  
+            width: 100%;  
+            height: 100%;  
+            display: block;  
+        }  
+
+        .btn-group {  
+            display: flex;  
+            gap: 10px;  
+        }  
+
+        button {  
+            padding: 10px 20px;  
+            background: #4CAF50;  
+            color: white;  
+            border: none;  
+            border-radius: 4px;  
+            cursor: pointer;  
+        }  
+
+        button#clear {  
+            background: #f44336;  
+        }  
+
+        /* 竖屏提示样式 */
+        .portrait-alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .portrait-alert img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .portrait-alert h2 {
+            margin: 0 0 15px 0;
+        }
+        
+        .portrait-alert p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+        }
+        
+        /* 竖屏时隐藏主内容，显示提示 */
+        @media screen and (orientation: portrait) {  
+            #signature-container, .btn-group {  
+                display: none;  
+            }  
+            .portrait-alert {
+                display: flex;
+            }
+        }  
+    </style>  
+</head>  
+<body>  
+
+    <!-- 竖屏提示弹窗 -->
+    <div class="portrait-alert">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik03LDEwSDE3QTEsMSAwIDAsMSAxNywxMkExLDEgMCAwLDEgMTcsMTRIN0ExLDEgMCAwLDEgNywxMkExLDEgMCAwLDEgNywxME0xOC41LDVINy41QTYuNSw2LjUgMCAwLDAsMSwxMS41VjE5QTIsMiAwIDAsMCAzLDIxSDIxQTIsMiAwIDAsMCAyMywxOVYxMS41QTYuNSw2LjUgMCAwLDAgMTguNSw1TTMsMTlWMTEuNUMzLDguNDMgNS40Myw2IDcuNSw2SDE4LjVDMjAuNTcsNiAyMyw4LjQzIDIzLDExLjVWMTlIMyIvPjwvc3ZnPg==" alt="旋转提示">
+      <h2>请将手机横屏使用</h2>
+      <p>为了获得最佳体验，请将您的设备旋转至横向模式</p>
+      <p>🔄 旋转手机后页面将自动刷新</p>
+    </div>
+
+    <div id="signature-container">  
+        <canvas id="canvas"></canvas>  
+    </div>  
+    <div class="btn-group">  
+        <button id="save">保存签名</button>  
+        <button id="clear">清空</button>  
+    </div>  
+
+    <script>  
+        // 初始化Canvas  
+        const canvas = document.getElementById('canvas');  
+        const ctx = canvas.getContext('2d');  
+        let isDrawing = false;  
+        let startX, startY;  
+
+        // 获取Canvas相对于视口的位置，用于修正触摸坐标。
+        function getCanvasPosition() {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                left: rect.left,
+                top: rect.top
+            };
+        }
+
+        // 初始化Canvas尺寸
+        function initCanvasSize() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            
+            // 设置更平滑的线条
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = '#000';
+        }
+
+        // 触摸开始事件  
+        canvas.addEventListener('touchstart', (e) => {  
+            e.preventDefault();  
+            const touch = e.touches[0];  
+            // 获取触摸点相对于Canvas的坐标
+            const pos = getCanvasPosition();
+            startX = touch.clientX - pos.left;  
+            startY = touch.clientY - pos.top;  
+            isDrawing = true;  
+            
+            // 开始新的路径
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+        });  
+
+        // 触摸移动事件（绘制线条）  
+        canvas.addEventListener('touchmove', (e) => {  
+            if (!isDrawing) return;  
+            e.preventDefault();  
+            const touch = e.touches[0];  
+            const pos = getCanvasPosition();
+            const currentX = touch.clientX - pos.left;  
+            const currentY = touch.clientY - pos.top;  
+            
+            // 绘制线条
+            ctx.lineTo(currentX, currentY);
+            ctx.stroke();
+            
+            startX = currentX;  
+            startY = currentY;  
+        });  
+
+        // 触摸结束事件  
+        canvas.addEventListener('touchend', () => {  
+            isDrawing = false;  
+            ctx.closePath();
+        });  
+
+        // 清空签名  
+        document.getElementById('clear').addEventListener('click', () => {  
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  
+        });  
+
+        // 保存签名为图片（Base64格式）  
+        document.getElementById('save').addEventListener('click', () => {  
+            const imgData = canvas.toDataURL('image/png');  
+            // 此处可将imgData发送至后端，或创建下载链接  
+            const link = document.createElement('a');  
+            link.href = imgData;  
+            link.download = `signature_${Date.now()}.png`;  
+            link.click();  
+        });  
+
+        // 适配横屏时Canvas尺寸（窗口变化时更新）  
+        window.addEventListener('resize', initCanvasSize);  
+        
+        // 初始化Canvas
+        initCanvasSize();
+    </script>  
+</body>  
+</html>

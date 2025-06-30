@@ -266,6 +266,31 @@ const routes = [
     component: () => import('../views/codeMirror.vue')
   },
   {
+    path: '/directiveLoadingSelectOptions',
+    name: 'DirectiveLoadingSelectOptions',
+    component: () => import('../views/directiveLoadingSelectOptions.vue')
+  },
+  {
+    path: '/girdLayout',
+    name: 'GirdLayout',
+    component: () => import('../views/girdLayout.vue')
+  },
+  {
+    path: '/commonTest',
+    name: 'CommonTest',
+    component: () => import('../views/commonTest.vue')
+  },
+  {
+    path: '/infiniteScrollTransfer',
+    name: 'InfiniteScrollTransfer',
+    component: () => import('../views/infiniteScrollTransfer.vue')
+  },
+  {
+    path: '/infiniteScrollTransferByElVirtual.vue',
+    name: 'infiniteScrollTransferByElVirtual.vue',
+    component: () => import('../views/infiniteScrollTransferByElVirtual.vue')
+  },
+  {
     path: '*',
     component: () => import('../components/page404/index.vue')
   }
