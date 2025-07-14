@@ -47,6 +47,7 @@
 44. views/girdLayout --- gird布局
 45. views/h5_signature --- H5横屏签名
 46. views/infiniteScrollTransfer --- 虚拟列表穿梭框
+47. views/selectLoadmore --- el-select懒加载
 
 ## css
 

@@ -54,7 +54,8 @@
       <router-link to="/directiveLoadingSelectOptions">directiveLoadingSelectOptions</router-link> |
       <router-link to="/girdLayout">gird布局</router-link> |
       <router-link to="/infiniteScrollTransfer">虚拟列表穿梭框</router-link> |
-      <router-link to="/infiniteScrollTransferByElVirtual.vue">虚拟列表穿梭框(el-virtual-transfer)</router-link> |
+      <router-link to="/infiniteScrollTransferByElVirtual">虚拟列表穿梭框(el-virtual-transfer)</router-link> |
+      <router-link to="/selectLoadmore">el-select懒加载</router-link> |
     </div>
     <!-- <div>
       <button @click="push">跳转</button>
