@@ -286,14 +286,24 @@ const routes = [
     component: () => import('../views/infiniteScrollTransfer.vue')
   },
   {
-    path: '/infiniteScrollTransferByElVirtual.vue',
+    path: '/infiniteScrollTransferByElVirtual',
     name: 'InfiniteScrollTransferByElVirtual.vue',
     component: () => import('../views/infiniteScrollTransferByElVirtual.vue')
   },
   {
-    path: '/selectLoadmore.vue',
-    name: 'SelectLoadmore.vue',
+    path: '/selectLoadmore',
+    name: 'SelectLoadmore',
     component: () => import('../views/selectLoadmore.vue')
+  },
+  {
+    path: '/newTestParent',
+    name: 'NewTestParent',
+    component: () => import('../views/newTestParent.vue')
+  },
+  {
+    path: '/loadFontFamily',
+    name: 'LoadFontFamily',
+    component: () => import('../views/loadFontFamily.vue')
   },
   {
     path: '*',

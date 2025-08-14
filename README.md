@@ -48,6 +48,8 @@
 45. views/h5_signature --- H5横屏签名
 46. views/infiniteScrollTransfer --- 虚拟列表穿梭框
 47. views/selectLoadmore --- el-select懒加载
+48. views/ImageLayering --- 图片层叠效果
+49. views/loadFontFamily --- 加载字体效果
 
 ## css
 

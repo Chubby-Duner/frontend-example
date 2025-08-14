@@ -56,6 +56,8 @@
       <router-link to="/infiniteScrollTransfer">虚拟列表穿梭框</router-link> |
       <router-link to="/infiniteScrollTransferByElVirtual">虚拟列表穿梭框(el-virtual-transfer)</router-link> |
       <router-link to="/selectLoadmore">el-select懒加载</router-link> |
+      <router-link to="/newTestParent">newTestParent</router-link> |
+      <router-link to="/loadFontFamily">LoadFontFamily</router-link> |
     </div>
     <!-- <div>
       <button @click="push">跳转</button>
